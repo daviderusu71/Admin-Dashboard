@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - David</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+        <h2>David Admin</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button id="loginBtn">Login</button>
+        <p id="loginError"></p>
+    </div>
+</div>
+    <div class="dashboard">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+    <div class="logo">DavidAdmin</div>
+
+    <ul>
+    <li class="active">
+        <span class="icon">📊</span>
+        <span class="text">Statistici</span>
+    </li>
+
+    <li>
+        <span class="icon">🧠</span>
+        <span class="text">Task-uri</span>
+    </li>
+
+    <li>
+        <span class="icon">🧾</span>
+        <span class="text">Facturi</span>
+    </li>
+
+    <li>
+        <span class="icon">⚙</span>
+        <span class="text">Setări</span>
+    </li>
+
+    <li id="logoutBtn">
+        <span class="icon">🚪</span>
+        <span class="text">Logout</span>
+    </li>
+</ul>
+</aside>
+
+        <!-- Main Content -->
+        <main class="main">
+
+    <header class="topbar">
+        <button id="menuToggle">☰</button>
+        <h1 id="pageTitle">Dashboard</h1>
+    </header>
+
+    <!-- STATISTICI -->
+    <section id="statistici" class="page active-page">
+
+        <section class="cards">
+            <div class="card">
+                <h3>Utilizatori</h3>
+                <p>1,240</p>
+            </div>
+            <div class="card">
+                <h3>Vânzări</h3>
+                <p>€8,540</p>
+            </div>
+            <div class="card">
+                <h3>Comenzi</h3>
+                <p>320</p>
+            </div>
+            <div class="card">
+                <h3>Vizite</h3>
+                <p>12,300</p>
+            </div>
+        </section>
+
+        <section class="chart-section">
+            <canvas id="myChart"></canvas>
+            <canvas id="salesChart" style="margin-top:40px;"></canvas>
+        </section>
+
+    </section>
+
+    <!-- TASK-URI -->
+    <section id="taskuri" class="page">
+        <section class="task-section">
+            <h2>Task Manager</h2>
+
+            <div class="task-stats">
+                <p id="taskCounter">0 task-uri</p>
+                <div class="progress-bar">
+                    <div id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="task-input">
+                <input type="text" id="taskInput" placeholder="Adaugă task nou...">
+                <button id="addTask">Adaugă</button>
+            </div>
+
+            <ul id="taskList"></ul>
+        </section>
+    </section>
+
+    <!-- SETARI -->
+    <section id="setari" class="page">
+        <div class="card">
+    <h3>Profil Utilizator</h3>
+
+    <input type="text" id="profileName" placeholder="Nume">
+    <input type="email" id="profileEmail" placeholder="Email">
+
+    <button id="saveProfile">Salvează Profil</button>
+
+    <hr style="margin:20px 0; opacity:0.2;">
+
+    <button id="clearTasks">Reset Task-uri</button>
+</div>
+    </section>
+
+    <section id="facturi" class="page">
+
+    <div class="card">
+        <h3>Generator Factură</h3>
+
+        <input type="text" id="clientName" placeholder="Nume Client">
+
+        <input type="number" id="productPrice" placeholder="Preț produs (€)">
+        <input type="number" id="productQty" placeholder="Cantitate">
+
+        <button id="addInvoiceItem">Adaugă produs</button>
+
+        <ul id="invoiceItems"></ul>
+
+        <p>Subtotal: €<span id="invoiceSubtotal">0</span></p>
+        <p>TVA (19%): €<span id="invoiceVAT">0</span></p>
+        <h2>Total: €<span id="invoiceTotal">0</span></h2>
+
+        <button id="generateInvoice">Generează PDF</button>
+    </div>
+
+    <div class="card" style="margin-top:30px;">
+        <h3>Istoric Facturi</h3>
+        <ul id="invoiceHistory"></ul>
+    </div>
+
+</section>
+
+</main>
+
+    </div>
+
+    <div id="notification" class="notification">
+    Task adăugat cu succes!
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="js/script.js"></script>
+</body>
+</html>
